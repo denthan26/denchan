@@ -16,7 +16,7 @@
     left: 0;
     width: 100vw;
     height: 3rem;
-    background-color: #FF9E7B;
+    background-image: linear-gradient(135deg, #FCCF31 15%, #F55555 100%);
     box-shadow: 6px 7px 8px 0px rgba(100, 100, 111, 0.2);
 }
 
@@ -130,4 +130,22 @@ body.dark-mode {
     margin-top: 1rem;
 }
 
-.nav .nav_list a {}
+.nav .nav_list div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 2.5rem;
+    /* border: 1px solid #ff0000; */
+    text-align: center;
+    margin: 0.1rem 0;
+    border-radius: 5px;
+    /* font-size: x-large; */
+    background-image: linear-gradient(#c4f4fe, #fdefbe 100%);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.nav .nav_list div:hover {
+    background-image: linear-gradient(135deg, #43CBFF 15%, #9708CC 100%)
+}
