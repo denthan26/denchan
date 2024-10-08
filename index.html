@@ -10,18 +10,14 @@
             /* 居中对齐 */
             text-align: center;
             padding-top: 100px;
-            /* 减少内边距 */
         }
 
         .btn-container {
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            /* 修改为 flex-start */
             height: 100vh;
-            /* 使用整个视口高度 */
             padding: 20px 0;
-            /* 添加一些内边距 */
         }
 
         .btn-animate {
@@ -76,7 +72,6 @@
             }
         }
 
-        /* 渐变背景动画 */
         @keyframes gradientAnimation {
             0% {
                 background-position: 0% 50%;
@@ -91,7 +86,6 @@
             }
         }
 
-        /* 蒙版层样式 */
         .overlay {
             position: fixed;
             top: 0;
@@ -106,14 +100,10 @@
             justify-content: center;
             align-items: center;
             opacity: 0;
-            /* 初始透明度为0 */
             visibility: hidden;
-            /* 初始不可见 */
             transition: opacity 0.5s, visibility 0.5s;
-            /* 过渡效果 */
         }
 
-        /* 加载动画样式 */
         .loader {
             border: 5px solid transparent;
             border-radius: 50%;
@@ -150,15 +140,13 @@
             loader.className = 'loader';
             overlay.appendChild(loader);
             document.body.appendChild(overlay);
-
-            // 显示蒙版和加载动画
             overlay.style.opacity = '1';
             overlay.style.visibility = 'visible';
 
             setTimeout(() => {
                 document.body.removeChild(overlay);
                 window.location.href = './page.html';
-            }, 1500); // 3秒后跳转
+            }, 1500);
         });
     </script>
 </body>
