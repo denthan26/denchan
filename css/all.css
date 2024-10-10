@@ -106,15 +106,39 @@ body.dark-mode {
 }
 
 .nav .logo {
+    margin-top: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    /* border: 1px solid blue; */
 }
 
 .nav img {
-    padding-top: 1.4rem;
-    width: 50%;
+    width: 7.5rem;
     border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+    /* border: 1px solid red; */
+}
+
+.nav img:hover {
+    transform-origin: center;
+    transform: scale(0.8);
+    animation: spin 4s linear infinite;
+    cursor: pointer;
+}
+
+@keyframes spin {
+    from {
+        transform: scale(0.8) rotate(0deg);
+    }
+
+    to {
+        transform: scale(0.8) rotate(360deg);
+    }
+}
+
+.nav img:not(:hover) {
+    transition: transform 0.3s ease-in-out;
 }
 
 .nav h3 {
