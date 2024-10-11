@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/home.css">
 </head>
 
 <body>
@@ -21,23 +22,32 @@
     </div>
     <div class="nav">
         <div class="logo">
-            <img src="./images/组合 1.png" alt="头像">
+            <div class="avatar">
+                <img src="./images/组合 1.png" alt="头像">
+            </div>
         </div>
         <h3>Denchan</h3>
         <div id="nav_list" class="nav_list">
             <div id="home">Home</div>
             <div id="blogs">Blogs</div>
             <div id="tools">Online Tools</div>
+            <div id="profile">About Me</div>
         </div>
     </div>
     <div class="container">
-        当前访问人数:
-        <span id="visitor"></span>
+        <div class="numbers">
+            当前访问人数:
+            <span id="visitor"></span>
+        </div>
+        <div class="music"></div>
+
     </div>
     <script src="./js/getTime.js"></script>
     <script src="./js/changeThemeToggle.js"></script>
     <script src="./js/changeNavCol.js"></script>
     <script src="./js/getVisitorNum.js"></script>
+    <script src="./js/avatarMe.js"></script>
+    <script src="./js/jump.js"></script>
 </body>
 
 </html>
