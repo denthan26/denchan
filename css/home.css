@@ -5,8 +5,17 @@
     justify-content: center;
     margin-top: 3rem;
     margin-left: 15rem;
+    background-color: blanchedalmond;
+    /* border: 1px solid red; */
+}
 
-    border: 1px solid red;
+.container .imgshow {
+    width: 100%;
+    height: auto;
+}
+
+.container .imgshow img {
+    width: 100%;
 }
 
 .container .box {
