@@ -8,4 +8,4 @@ count = count + 1;
 localStorage.setItem('count', count.toString());
 
 // 将新的count值显示在页面元素中
-visitor.textContent = '您是第 ' + count + ' 位访客';
+visitor.textContent = '您已访问 ' + count + ' 次，爱你😘';
