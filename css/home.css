@@ -5,21 +5,13 @@
     justify-content: center;
     margin-top: 3rem;
     margin-left: 15rem;
-    background-color: blanchedalmond;
+    /* background-color: blanchedalmond; */
     /* border: 1px solid red; */
 }
 
-.container .imgshow {
-    width: 100%;
-    height: auto;
-}
-
-.container .imgshow img {
-    width: 100%;
-}
-
-.container .box {
-    width: 100%;
-    height: 500px;
-    border: 1px solid blue;
+.container .calendar {
+    margin-top: 10px;
+    width: 90%;
+    height: 300px;
+    border: 1px solid black;
 }
