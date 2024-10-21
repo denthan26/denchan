@@ -299,3 +299,11 @@ function animate() {
 
 // 启动渲染循环
 animate();
+
+window.onresize = function () {
+    let widthNew = calendar.clientWidth;
+    let heightNew = calendar.clientHeight;
+    renderer.setSize(widthNew, heightNew);
+    camera.aspect = widthNew / heightNew;
+    camera.updateProjectionMatrix();
+}
