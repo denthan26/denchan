@@ -2,6 +2,12 @@ import * as THREE from "three";
 import { OrbitControls } from "/js/threejs/examples/jsm/controls/OrbitControls.js";
 import { FontLoader } from '/js/threejs/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from "/js/threejs/examples/jsm/geometries/TextGeometry.js";
+import Stats from "/js/threejs/examples/jsm/libs/stats.module.js";
+
+console.log(Stats);
+const stats = new Stats();
+
+
 
 
 console.log(THREE.Scene);
@@ -280,6 +286,7 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(width, height);
 renderer.render(scene, camera);
 calendar.appendChild(renderer.domElement);
+// calendar.appendChild(stats.domElement);
 
 
 
@@ -294,6 +301,7 @@ controls.addEventListener('change', function () {
 // 渲染循环
 function animate() {
     requestAnimationFrame(animate);
+    // stats.update();
     renderer.render(scene, camera);
 }
 
