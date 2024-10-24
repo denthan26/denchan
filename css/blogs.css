@@ -1,0 +1,81 @@
+.blogsList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-left: 15rem;
+    padding-top: 3rem;
+    /* background-color: blanchedalmond; */
+    /* border: 1px solid red; */
+}
+
+.blogsList .blog {
+    width: 95%;
+    margin-top: 0.6rem;
+    /* background-color: #FFCCFF; */
+    font-size: 1.45rem;
+    font-weight: 400;
+    padding-left: 2rem;
+    /* border-radius: 10px; */
+    cursor: pointer;
+    box-shadow: 5px 5px 0px 0px #cacaca;
+    /* font-size: 30px; */
+    /* color: #000; */
+    /* text-shadow: 3px 1px 4px rgba(0, 0, 0, 0.49); */
+}
+
+.blogsList .blog:hover {
+    opacity: 0.7;
+}
+
+.info {
+    margin-left: 15rem;
+    margin-top: 5rem;
+    padding-left: 10rem;
+    /* border: 1px solid red; */
+}
+
+.colorList {
+    display: flex;
+    flex-direction: row;
+    margin-left: 15rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.colorList div {
+    width: 80px;
+    height: 50px;
+    margin-right: 3px;
+    cursor: pointer;
+}
+
+.colorList div:nth-child(1) {
+    background-color: #66B2FF;
+}
+
+.colorList div:nth-child(2) {
+    background-color: #7CFC00;
+}
+
+.colorList div:nth-child(3) {
+    background-color: #FF6B6B;
+}
+
+.colorList div:nth-child(4) {
+    background-color: #FFEB3B;
+}
+
+.colorList div:nth-child(5) {
+    background-color: #9B59B6;
+}
+
+.colorList div:nth-child(6) {
+    background-color: #FFA500;
+}
+
+.colorList div:nth-child(7) {
+    background-color: #868E96;
+}

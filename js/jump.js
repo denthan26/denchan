@@ -2,6 +2,7 @@ const home = document.getElementById("home");
 const profile = document.getElementById("profile");
 const blogs = document.getElementById("blogs");
 const tools = document.getElementById("tools");
+const demo = document.getElementById("demo");
 
 // 给每一个添加页面跳转
 home.addEventListener("click", function () {
@@ -15,4 +16,7 @@ blogs.addEventListener("click", function () {
 })
 tools.addEventListener("click", function () {
     window.location.href = "tools.html";
+})
+demo.addEventListener("click", function() {
+    window.location.href = "demo.html";
 })
