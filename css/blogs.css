@@ -12,12 +12,13 @@
 
 .blogsList .blog {
     width: 95%;
+    height: 35px;
     margin-top: 0.6rem;
-    /* background-color: #FFCCFF; */
+    background-color: #FFCCFF;
     font-size: 1.45rem;
-    font-weight: 400;
+    /* font-weight: 400; */
     padding-left: 2rem;
-    /* border-radius: 10px; */
+    border-radius: 10px;
     cursor: pointer;
     box-shadow: 5px 5px 0px 0px #cacaca;
     /* font-size: 30px; */
