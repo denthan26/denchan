@@ -1,12 +1,11 @@
 .breadcrumbs {
-    width: 100%;
     margin-left: 15rem;
     margin-top: 3rem;
     padding-top: 20px;
 }
 
 .breadcrumbs ol {
-    width: 90%;
+    /* width: 90%; */
     list-style-type: none;
     display: flex;
     padding-left: 20px;
@@ -61,6 +60,7 @@
     position: absolute;
     top: 25%;
     right: 10px;
+    color: #FFD700;
 }
 
 .info {

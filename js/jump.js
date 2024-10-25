@@ -6,17 +6,17 @@ const demo = document.getElementById("demo");
 
 // 给每一个添加页面跳转
 home.addEventListener("click", function () {
-    window.location.href = "home.html";
+    window.location.href = "/home.html";
 })
 profile.addEventListener("click", function () {
-    window.location.href = "profile.html";
+    window.location.href = "/profile.html";
 })
 blogs.addEventListener("click", function () {
-    window.location.href = "blogs.html";
+    window.location.href = "/blogs.html";
 })
 tools.addEventListener("click", function () {
-    window.location.href = "tools.html";
+    window.location.href = "/tools.html";
 })
-demo.addEventListener("click", function() {
-    window.location.href = "demo.html";
+demo.addEventListener("click", function () {
+    window.location.href = "/demo.html";
 })
