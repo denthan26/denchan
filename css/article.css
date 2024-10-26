@@ -6,6 +6,8 @@
     padding-top: 20px;
     border: 1px solid red;
     height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .entry__title {
@@ -44,5 +46,22 @@
     font-weight: 300;
     font-size: 1.5rem;
     line-height: 1.833;
-    margin-bottom: 3.6rem;
+    margin-bottom: 3rem;
+}
+
+.entry__content span {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+.entry__content img {
+    width: 100%;
+}
+
+
+.codearea {
+    margin: 20px 30px;
+    /* border: 1px solid black; */
+    height: auto;
 }

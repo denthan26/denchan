@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/all.css">
     <link rel="stylesheet" href="/css/blogs.css">
     <link rel="stylesheet" href="/css/article.css">
-
+    <link rel="stylesheet" href="/css/prism.css">
 
 </head>
 
@@ -51,21 +51,99 @@
             <p>
                 Win11在进行还原浏览器后，有概率会出现浏览器无法使用的情况。表现为双击浏览器后无法启动浏览器。
             </p>
-            <p class="info">
+            <span class="version-info">
                 版本:Win11;<br>
-                浏览器:Edge;<br>
+                浏览器:Edge; <br>
                 Lenovo;
-            </p>
+            </span>
+            <hr>
             <p>
                 此时我这里有两种解决方法。
             </p>
             <p>
                 第一种是右键浏览器，点击"属性"，点击"打开文件所在的位置"，双击数字文件夹，找到"msedgewebview2.exe"，双击就可以打开浏览器了。最后只需要把浏览器的目标位置更改成这个就可以了。
             </p>
+            <img src="/blogsarticle/images/001.png" alt="修改文件路径">
             <p>
-                另外一种是卸载联想电脑管家，找到设置，程序，卸载程序。把这个应用卸载后，浏览器就可以使用了。
+                另外一种是卸载<span style="font-weight: bold;">联想电脑管家</span>，找到设置，程序，卸载程序。把这个应用卸载后，浏览器就可以使用了。
             </p>
+            <p>下面内容不必理会</p>
         </div>
+        <div class="codearea">
+            <pre><code class="language-css">
+.container .content .copy-link{
+    border:1px solid #E5E5E5;
+    background:#f9f9f9;
+    padding:15px 15px 15px 120px;
+    margin-bottom:30px;
+    position: relative;
+    margin-top:90px;
+}
+            </code></pre>
+        </div>
+        <div class="codearea">
+            <pre><code class="language-c">
+#include &lt;iostream&gt;
+ 
+using namespace std;
+    
+// 基类
+class Shape 
+{
+public:
+    // 提供接口框架的纯虚函数
+    virtual int getArea() = 0;
+    void setWidth(int w)
+    {
+        width = w;
+    }
+    void setHeight(int h)
+    {
+        height = h;
+    }
+protected:
+    int width;
+    int height;
+};
+    
+// 派生类
+class Rectangle: public Shape
+{
+public:
+    int getArea()
+    { 
+        return (width * height); 
+    }
+};
+class Triangle: public Shape
+{
+public:
+    int getArea()
+    { 
+        return (width * height)/2; 
+    }
+};
+    
+int main(void)
+{
+    Rectangle Rect;
+    Triangle  Tri;
+    
+    Rect.setWidth(5);
+    Rect.setHeight(7);
+    // 输出对象的面积
+    cout << "Total Rectangle area: " << Rect.getArea() << endl;
+    
+    Tri.setWidth(5);
+    Tri.setHeight(7);
+    // 输出对象的面积
+    cout << "Total Triangle area: " << Tri.getArea() << endl; 
+    
+    return 0;
+}
+            </code></pre>
+        </div>
+
     </div>
 
     <script src="/js/getTime.js"></script>
@@ -75,6 +153,7 @@
     <script src="/js/avatarMe.js"></script>
     <script src="/js/jump.js"></script>
     <script src="/js/copyColor.js"></script>
+    <script src="/js/prism.js"></script>
 
 </body>
 
