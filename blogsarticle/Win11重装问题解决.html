@@ -9,6 +9,8 @@
     <link rel="icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="/css/all.css">
     <link rel="stylesheet" href="/css/blogs.css">
+    <link rel="stylesheet" href="/css/article.css">
+
 
 </head>
 
@@ -38,17 +40,32 @@
             <div id="demo">Demo</div>
         </div>
     </div>
-    <div class="breadcrumbs">
-        <ol>
-            <li>*</li>
-            <li>/</li>
-            <li>Win11重装问题解决</li>
-        </ol>
-    </div>
-    <div class="blogsList">
-        <div onclick="javascript:window.location.href='/blogsarticle/Win11重装问题解决.html'" class="blog"
-            style="background-color: #66B2FF;">无法打开edge浏览器<span>new</span></div>
-        <div class="blog" style="background-color: #7CFC00;">安全中心显示IT限制</div>
+
+    <div class="article">
+        <h1 class="entry__title">无法打开Edge浏览器</h1>
+        <ul class="entry__header-meta">
+            <li class="author">By Denchan</li>
+            <li class="date">October 16, 2024</li>
+        </ul>
+        <div class="entry__content">
+            <p>
+                Win11在进行还原浏览器后，有概率会出现浏览器无法使用的情况。表现为双击浏览器后无法启动浏览器。
+            </p>
+            <p class="info">
+                版本:Win11;<br>
+                浏览器:Edge;<br>
+                Lenovo;
+            </p>
+            <p>
+                此时我这里有两种解决方法。
+            </p>
+            <p>
+                第一种是右键浏览器，点击"属性"，点击"打开文件所在的位置"，双击数字文件夹，找到"msedgewebview2.exe"，双击就可以打开浏览器了。最后只需要把浏览器的目标位置更改成这个就可以了。
+            </p>
+            <p>
+                另外一种是卸载联想电脑管家，找到设置，程序，卸载程序。把这个应用卸载后，浏览器就可以使用了。
+            </p>
+        </div>
     </div>
 
     <script src="/js/getTime.js"></script>
