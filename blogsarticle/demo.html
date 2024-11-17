@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>blogs</title>
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/blogs.css">
+    <link rel="stylesheet" href="/css/article.css">
+    <link rel="stylesheet" href="/css/prism.css">
+
+</head>
+
+<body>
+    <div id="header" class="header">
+        <div id="header_time" class="time"></div>
+        <div class="titler">我们的目标是群星的终点</div>
+        <div class="day_dark">
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+    <div class="nav">
+        <div class="logo">
+            <div class="avatar">
+                <img src="/images/组合 1.png" alt="头像">
+            </div>
+        </div>
+        <h3>Denchan</h3>
+        <div id="nav_list" class="nav_list">
+            <div id="home">Home</div>
+            <div id="blogs">Blogs</div>
+            <div id="tools">Online Tools</div>
+            <div id="profile">About Me</div>
+            <div id="demo">Demo</div>
+        </div>
+    </div>
+    <div class="logo-netlify">
+        <img src="/images/logo-netlify-small-monochrome-lightmode.svg" alt="">
+    </div>
+
+    <div class="article">
+        <h1 class="entry__title">python MoviePy</h1>
+
+        <ul class="entry__header-meta">
+            <li class="author">By Denchan</li>
+            <li class="date">October 31， 2024</li>
+        </ul>
+
+        <div class="entry__content">
+            <p>
+                在典型的MoviePy脚本是这样的：加载视频或音频、修改、将他们连接在一起并最后生成一个新视频文件。作为一个示例，我们加载一个关于我上个假期的视频，降低音量，在前十秒添加标题在视频的中央，然后写入一个文件：
+            </p>
+        </div>
+        <div class="codearea">
+            <pre><code class="language-css"># Import everything needed to edit video clips
+        from moviepy.editor import *
+        
+        # Load myHolidays.mp4 and select the subclip 00:00:50 - 00:00:60
+        clip = VideoFileClip("myHolidays.mp4").subclip(50,60)
+        
+        # Reduce the audio volume (volume x 0.8)
+        clip = clip.volumex(0.8)
+        
+        # Generate a text clip. You can customize the font, color, etc.
+        txt_clip = TextClip("My Holidays 2013",fontsize=70,color='white')
+        
+        # Say that you want it to appear 10s at the center of the screen
+        txt_clip = txt_clip.set_pos('center').set_duration(10)
+        
+        # Overlay the text clip on the first video clip
+        video = CompositeVideoClip([clip, txt_clip])
+        
+        # Write the result to a file (many options available !)
+        video.write_videofile("myHolidays_edited.webm")</code></pre>
+        </div>
+        <div class="entry__content">
+            <p>
+                在MoviePy中，核心对象是剪辑，可以使用AudioClips或VideoClips来处理。剪辑可被修改（剪切、降低速度、变暗等）或与其他剪辑混合组成新剪辑。剪辑可被预览（使用PyGame或IPython
+                Notebook），也可生成文件（如MP4文件、GIF文件、MP3文件等）。以VideoClips为例，它可以由一个视频文件、一张图片、一段文字或者一段卡通动画而来。它可以包含音频轨道（即AudioClip）和一个遮罩（一种特殊的VideoClip），用于表明当两个剪辑混合时，哪一部分的画面被隐藏）。详见生成与导出视频剪辑和混合剪辑。
+            </p>
+        </div>
+    </div>
+
+    <script src="/js/getTime.js"></script>
+    <script src="/js/changeThemeToggle.js"></script>
+    <script src="/js/changeNavCol.js"></script>
+    <script src="/js/getVisitorNum.js"></script>
+    <script src="/js/avatarMe.js"></script>
+    <script src="/js/jump.js"></script>
+    <script src="/js/copyColor.js"></script>
+    <script src="/js/prism.js"></script>
+
+</body>
+
+
+</html>

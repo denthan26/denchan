@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>blogs</title>
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/blogs.css">
+    <link rel="stylesheet" href="/css/article.css">
+    <link rel="stylesheet" href="/css/prism.css">
+
+</head>
+
+<body>
+    <div id="header" class="header">
+        <div id="header_time" class="time"></div>
+        <div class="titler">我们的目标是群星的终点</div>
+        <div class="day_dark">
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+    <div class="nav">
+        <div class="logo">
+            <div class="avatar">
+                <img src="/images/组合 1.png" alt="头像">
+            </div>
+        </div>
+        <h3>Denchan</h3>
+        <div id="nav_list" class="nav_list">
+            <div id="home">Home</div>
+            <div id="blogs">Blogs</div>
+            <div id="tools">Online Tools</div>
+            <div id="profile">About Me</div>
+            <div id="demo">Demo</div>
+        </div>
+    </div>
+    <div class="logo-netlify">
+        <img src="/images/logo-netlify-small-monochrome-lightmode.svg" alt="">
+    </div>
+
+    <div class="article">
+        <h1 class="entry__title">Wins上使用ffmpeg录屏并设置编码格式</h1>
+
+        <ul class="entry__header-meta">
+            <li class="author">By Denchan</li>
+            <li class="date">November 17, 2024</li>
+        </ul>
+
+        <div class="entry__content">
+            <p>
+                放弃其他软件，在Windows上使用ffmpeg进行屏幕录制。
+            </p>
+        </div>
+        <div class="entry__content">
+            <p>
+                版本：ffmpeg-N-117688-gd6b2d08fc7-win64-gpl-shared（文件夹的名称是这个）
+            </p>
+        </div>
+        <div class="entry__content">
+            <p>
+                屏幕及音频录制：
+            </p>
+        </div>
+        <div class="codearea">
+            <pre><code class="language-shell">
+// 获取已有设备，如果没有，则需要其他软件包
+ffmpeg -list_devices true -f dshow -i dummy
+// 将音频设备填入，desktop 表示录制整个桌面
+ffmpeg -f gdigrab -i desktop -video_size 1920x1080 -framerate 30 -f dshow -i audio="麦克风阵列 (适用于数字麦克风的英特尔® 智音技术)" -c:v libx264 -c:a aac output.mp4
+
+// 重新编码，wins自带的媒体播放器不支持第二步的编码设置
+ffmpeg -i input.mp4 -vcodec libx264 -pix_fmt yuv420p -acodec aac output.mp4
+    </code></pre>
+        </div>
+    </div>
+
+    <script src="/js/getTime.js"></script>
+    <script src="/js/changeThemeToggle.js"></script>
+    <script src="/js/changeNavCol.js"></script>
+    <script src="/js/getVisitorNum.js"></script>
+    <script src="/js/avatarMe.js"></script>
+    <script src="/js/jump.js"></script>
+    <script src="/js/copyColor.js"></script>
+    <script src="/js/prism.js"></script>
+
+</body>
+
+
+</html>
