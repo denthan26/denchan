@@ -5,39 +5,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/prism.css">
+
 </head>
 
 <body>
-    Step1：安装MySQL
-    sudo apt update # 更新软件源
-    sudo apt install mysql-server -y # 安装
-    mysql --version # 查看版本
-    sudo systemctl status mysql # 查看运行状态
-    netstat -tln # 以数字ip形式显示mysql的tcp监听状态
+    <h1>mysql wins 源码安装</h1>
+    <p>下载安装包</p>
+    <a href="https://downloads.mysql.com/archives/community/" target="_blank"> MySQL Community Server (Archived
+        Versions)</a>
+    <p>在解压后的文件夹内新建my.txt文件，写入以下内容：</p>
+    <pre><code class="language-txt">
+[client]
+port=3306
+default-character-set=utf8
+    
+[mysql]
+default-character-set=utf8
+    
+[mysqld]
+#端口
+port=3306
+# 软件路径
+basedir="D:/Program Files/mysql"
+# 数据保存位置
+datadir="D:/Program Files/mysql/Data"
+# 允许最大连接数
+max_connections=5
+# 允许连接失败的次数。
+max_connect_errors=3
+# 服务端使用的字符集默认为UTF8
+character-set-server=utf8
+# 创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+# 默认使用“mysql_native_password”插件认证
+default_authentication_plugin=mysql_native_password
+    </code></pre>
+    <p>以管理员打开cmd，进入bin目录，输入以下命令</p>
+    <pre><code class="language-bash">mysqld --initialize --console</code></pre>
+    <p>可以翻译回车后出现的内容，都是警告，在学习时不碍事，生产环境用Linux吗</p>
+    <p>找到root@localhost的内容，后面跟着的是临时密码</p>
 
-    Step2：设置MySQL的root密码
-    sudo mysql -u root # 使用root无密码登录
-    alter user 'root'@'localhost' identified with mysql_native_password by '123456'; # 为root添加密码
-    exit;
+    <p>注意，这一步可能会出现少dll的内容，按照如下的步骤安装</p>
+    <p>
+        打开链接<a href="https://learn.microsoft.com/zh-cn/cpp/windows/latest-supported-vc-redist?view=msvc-170">Microsoft
+            Visual C++ 可再发行程序包最新支持的下载</a>，
+        找到最新的 Microsoft Visual C++ 可再发行程序包版本，选择对应的版本下载安装即可。
+    </p>
 
-    Step3：设置允许root远程登录
-    mysql -u root -p # 使用root有密码登录
-    use mysql; # 使用名为mysql的数据库
-    update user set host='%' where user='root'; # 运行root远程登录
-    flush privileges; # 权限刷新
-    exit;
-
-    Step4：允许其他ip远程登录
-    sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
-    修改bind-address = 0.0.0.0
-    修改后重启：sudo systemctl restart mysql
-
-    Step5：使用主机连接测试
-    mysql -u root -p -h 192.168.1.100（ip替换为实际MySQL服务器ip）
-
-    若有问题欢迎询问，期待三连+关注，谢谢！==
-    BY UP主：Galaxfy
-
+    <p>安装数据库服务</p>
+    <pre><code class="language-bash">mysqld --install</code></pre>
+    <p>启动数据库服务</p>
+    <pre><code class="language-bash">net start mysql</code></pre>
+    <p>登录数据库</p>
+    <pre><code class="language-bash">mysql -uroot -p</code></pre>
+    <p>修改密码</p>
+    <pre><code class="language-bash">ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';</code></pre>
+    <p>MySQL服务就安装好了，如果无法通过win+r。输入cmd打开mysql，将bin目录放到环境变量下</p>
+    <h2>测试</h2>
+    <pre><code class="language-bash">
+CREATE DATABASE test;
+USE test;
+CREATE TABLE student(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(20),
+    age INT,
+    gender VARCHAR(10)
+);
+INSERT INTO student(name, age, gender) VALUES('张三', 18, '男');
+INSERT INTO student(name, age, gender) VALUES('李四', 19, '女');
+INSERT INTO student(name, age, gender) VALUES('王五', 20, '男');
+SELECT * FROM student;
+    </code></pre>
+    <script src="/js/prism.js"></script>
 </body>
 
 </html>
