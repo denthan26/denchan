@@ -1,153 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Denchan</title>
+    <title>首页</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        h1 {
-            /* 居中对齐 */
-            text-align: center;
-            padding-top: 100px;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
-        .btn-container {
+        header {
+            background-color: #f8f8f8;
+            padding: 10px 20px;
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            height: 100vh;
-            padding: 20px 0;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .btn-animate {
-            position: relative;
-            width: 130px;
+        .logo img {
             height: 40px;
-            line-height: 40px;
-            border: none;
-            border-radius: 5px;
-            background: #027efb;
-            color: #fff;
-            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
             cursor: pointer;
         }
 
-        .btn-animate__tear-up-out {
-            overflow: hidden;
-            z-index: 1;
-            background-color: #90cf5b;
-
-            &::before,
-            &::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                z-index: -1;
-                width: 51%;
-                height: 100%;
-                transform: translate3d(0, 0, 0);
-                transition: .35s ease-out;
-                background-color: #027efb;
-            }
-
-            &::before {
-                left: 0;
-            }
-
-            &::after {
-                right: 0;
-            }
-
-            &:hover {
-                &::before {
-                    opacity: 0;
-                    transform: translate3d(-100%, 0, 0) rotate(-45deg);
-                }
-
-                &::after {
-                    opacity: 0;
-                    transform: translate3d(100%, 0, 0) rotate(-45deg);
-                }
-            }
+        main {
+            padding: 20px;
         }
 
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(270deg, #e66465, #9198e5);
-            background-size: 200% 200%;
-            animation: gradientAnimation 3s ease infinite;
-            z-index: 9999;
+        .content {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s, visibility 0.5s;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .loader {
-            border: 5px solid transparent;
-            border-radius: 50%;
-            border-top: 5px solid #fff;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
+        .video {
+            flex: 1 1 calc(33.333% - 20px);
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
+        .video img {
+            /* 图片水平垂直居中 */
+            display: block;
+            margin: 0 auto;
+            width: 60%;
+            height: auto;
+        }
 
-            100% {
-                transform: rotate(360deg);
-            }
+        .video p {
+            padding: 10px;
+            margin: 0;
+            text-align: center;
+            font-size: 14px;
+            color: #333;
         }
     </style>
 </head>
 
 <body>
-    <h1>Hello I'm Denchan</h1>
-    <div class="btn-container">
-        <div id="start" class="btn-animate btn-animate__tear-up-out">
-            Let's Start
+    <header>
+        <div class="logo">
+            <img src="/images/logo.png" alt="Logo">
         </div>
-    </div>
+        <div>
+            Hello, World!
+        </div>
+        <nav>
+            <ul>
+                <li class="home">Home</li>
+                <li class="java">Java</li>
+                <li class="python">Python</li>
+                <li class="cpp">C++</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="content">
+            <div class="video">
+                <img src="/images/blender02.png" alt="Video 1">
+                <p>官方预告大曝光</p>
+            </div>
+            <div class="video">
+                <img src="video2.jpg" alt="Video 2">
+                <p>要请客</p>
+            </div>
+            <div class="video">
+                <img src="video3.jpg" alt="Video 3">
+                <p>生在新生代的旧平成</p>
+            </div>
+        </div>
+    </main>
     <script>
-        document.getElementById('start').addEventListener('click', function () {
-            const overlay = document.createElement('div');
-            overlay.className = 'overlay';
-            const loader = document.createElement('div');
-            loader.className = 'loader';
-            overlay.appendChild(loader);
-            document.body.appendChild(overlay);
-            overlay.style.opacity = '1';
-            overlay.style.visibility = 'visible';
-
-            setTimeout(() => {
-                document.body.removeChild(overlay);
-                window.location.href = './home.html';
-            }, 1500);
-        });
+        document.getElementsByClassName("home")[0].style.background = "#f7e1e1";
     </script>
 </body>
 
