@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指针与char详解</title>
+    <link rel="stylesheet" href="/css/prism.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .jump {
+            cursor: pointer;
+        }
+
+        .jump:hover {
+            background-color: antiquewhite;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        code {
+            background-color: #f9f9f9;
+            padding: 5px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="padding: 20px;"></div>
+    <div class="container">
+        <h1>指针与char详解</h1>
+        <p>内容：解释char，char*，数组，字符串相关的概念与应用。</p>
+        <p>详细代码</p>
+        <pre>
+        <code class="language-c">
+
+#include<stdio.h>
+#include<stdlib.h> // 标注库包含malloc与free函数
+#include<string.h>
+int main()
+{
+    char a = 'a';
+    char* p = &a;
+    printf("%p\n", p); // 0x7ffd14492c87
+    printf("%p\n", &p);
+    printf("%c\n", *p); // a
+
+    char str[] = "Hello, World!";
+    printf("%p\n", str); // 0x7ffd14492c9a
+    printf("%s\n", str); // Hello, World!
+    printf("%c\n", *str); // H
+
+    char* str2 = "Hello wWorld!";
+    printf("%p\n", str2); // 0x58542415a00c
+    printf("%s\n", str2); // Hello wWorld!
+    printf("%c\n", *str2); // H
+    printf("%p\n", &str2); // 0x7ffd14492c88
+
+    char* str3 = "Hello i am Lihua";
+    char* p3 = str3; // 此时p3存储的是str3中的内容，str3中存储的是"Hello i am Lihua"的首个字符的地址
+    if (*p3 != '\0') printf("当前未完成字符串的读取\n");
+    while (*p3 != '\0') 
+    {
+        printf("%c\t", *p3);
+        p3 = p3 + 1;
+    }
+    printf("\n");
+    if (*p3 == '\0') printf("字符串打印结束\n");
+    
+
+    // void *malloc(size_t size);
+    // 内存泄漏 
+    char* str4 = (char*) malloc(14 * sizeof(char)); 
+    str4 = "Hello, World!\0";
+    printf("%c\n", str4[1]); // e
+
+    // 应使用strcpy函数，此函数在string.h中
+    char* str5 = (char*) malloc(15 * sizeof(char));
+    // 在C语言中，malloc 函数用于动态分配内存。如果内存分配成功，malloc 会返回一个指向分配的内存的指针；
+    // 如果内存分配失败，malloc 会返回 NULL。
+    // 因此，通过检查 malloc 的返回值是否为 NULL，可以判断内存分配是否成功。
+    if (str5 == NULL) return 1;
+    strcpy(str5, "Hello Xiaoming");
+    printf("%s\n", str5); // Hello Xiaoming
+    free(str5);
+    return 0;
+}
+                
+                
+        </code></pre>
+    </div>
+
+    <script src="/js/prism.js"></script>
+
+</body>
+
+</html>
