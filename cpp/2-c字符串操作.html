@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C字符串操作</title>
+    <link rel="stylesheet" href="/css/prism.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .jump {
+            cursor: pointer;
+        }
+
+        .jump:hover {
+            background-color: antiquewhite;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        code {
+            background-color: #f9f9f9;
+            padding: 5px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="padding: 20px;"></div>
+    <div class="container">
+        <h1>C语言中的字符串操作</h1>
+        <p>内容：C中没有string概念，一切操作都是char</p>
+        <p>详细代码</p>
+        <pre>
+        <code class="language-c">
+
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt; // 标准库包含malloc与free函数
+#include&lt;string.h&gt; // 字符串相关操作
+#include&lt;stddef.h&gt; // 指针相减
+int main()
+{
+    char arr[50] = "hello world!";
+    printf("arr = %s\n", arr);
+    char* str1 = "xiaoming";
+    printf("str1 = %s\n", str1);
+
+    char* str2 = (char*)malloc(20 * sizeof(char));
+    printf("请输入字符串:");
+    scanf("%s", str2);
+    // 当前ste2的字符串中没有\0停止符
+    // 使用strcspn 字符串互补跨度
+    str2[strcspn(str2, "\n")] = '\0';
+    printf("你输入的字符串是：%s\n", str2);
+    free(str2);
+
+    //字符串相关操作
+    // 字符串长度 strlen
+    char* name = "lilei";
+    printf("name的长度是:%zu\n", strlen(name)); 
+
+    //字符串拼接 strcat
+    char a1[100] = "hello,";
+    char a2[] = "world";
+    strcat(a1,a2);
+    printf("拼接后的字符串:%s\n", a1);
+
+    //字符串复制
+    char src[] = "Hello, World!";
+    char dest[50];
+    strcpy(dest, src);  // dest = "Hello, World!"
+    printf("复制后的字符串:%s\n", dest);
+
+    //字符串比较 strcmp
+    char* b1 = "hello";
+    char* b2 = "hello";
+    //如果两个字符串相等，返回0
+    printf("字符串的比较结果:%d\n", strcmp(b1, b2));
+
+    //字符串查找 strstr
+    char str[] = "Hello, World!";
+    char sub[] = "World";
+    char* found = strstr(str, sub);
+    printf("查找的位置%s\n", found);
+    printf("str指向的位置在%p,自身在内存的地址在%p\n", str, &str);
+    printf("found指向的的位置在%p,自身在内存的地址在%p\n", found, &found);
+    // 指针相减操作，类型是ptrdiff_t
+    ptrdiff_t distance = found - str;
+    printf("之间的距离是%ld\n", distance);
+    return 0;
+    return 0;
+}
+                
+                
+        </code></pre>
+        <p>编译阶段出现的问题</p>
+        <pre><code class="language-bash">
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Last login: Sun Feb  2 12:38:34 2025 from 192.168.222.1
+denchan@denchan:~$ cd 文档
+denchan@denchan:~/文档$ ls
+c-demo  cpp-demo  python3-demo  xwechat_files
+denchan@denchan:~/文档$ cd c-demo/
+denchan@denchan:~/文档/c-demo$ ls
+pac  pai  pointerandchar.c  pointerandint.c
+denchan@denchan:~/文档/c-demo$ touch string.c
+denchan@denchan:~/文档/c-demo$ ls
+pac  pai  pointerandchar.c  pointerandint.c  string.c
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+denchan@denchan:~/文档/c-demo$ ./string
+arr = hello world!
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+string.c: In function ‘main’:
+string.c:7:32: error: expected ‘;’ before ‘return’
+    7 |     printf("str1 = %s\n", str1)
+        |                                ^
+        |                                ;
+    8 |     return 0;
+        |     ~~~~~~
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+denchan@denchan:~/文档/c-demo$ ./string
+arr = hello world!
+str1 = xiaoming
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+string.c: In function ‘main’:
+string.c:9:18: error: ‘null’ undeclared (first use in this function)
+    9 |     char* str2 = null;
+        |                  ^~~~
+string.c:9:18: note: each undeclared identifier is reported only once for each function it appears in
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+denchan@denchan:~/文档/c-demo$ ./string
+arr = hello world!
+str1 = xiaoming
+你好啊
+你输入的字符串是：(null)denchan@denchan:~/文档/c-demo$ ./string
+arr = hello world!
+str1 = xiaoming
+nih
+你输入的字符串是：(null)denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+denchan@denchan:~/文档/c-demo$ ./string
+arr = hello world!
+str1 = xiaoming
+请输入字符串:xx
+你输入的字符串是：xxdenchan@denchan:~/文档/c-demo$ gcc string.c -o string
+denchan@denchan:~/文档/c-demo$ ./string
+arr = hello world!
+str1 = xiaoming
+请输入字符串:我的爱
+你输入的字符串是：我的爱
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+string.c: In function ‘main’:
+string.c:16:10: warning: implicit declaration of function ‘strcspan’; did you mean ‘strcspn’? [-Wimplicit-function-declaration]
+    16 |     str2[strcspan(str2, '\n')] = '\0';
+        |          ^~~~~~~~
+        |          strcspn
+/usr/bin/ld: /tmp/ccf4k8jw.o: in function `main':
+string.c:(.text+0xe8): undefined reference to `strcspan'
+collect2: error: ld returned 1 exit status
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+string.c: In function ‘main’:
+string.c:16:24: warning: passing argument 2 of ‘strcspn’ makes pointer from integer without a cast [-Wint-conversion]
+    16 |     str2[strcspn(str2, '\n')] = '\0';
+        |                        ^~~~
+        |                        |
+        |                        int
+In file included from string.c:3:
+/usr/include/string.h:293:53: note: expected ‘const char *’ but argument is of type ‘int’
+    293 | extern size_t strcspn (const char *__s, const char *__reject)
+        |                                         ~~~~~~~~~~~~^~~~~~~~
+string.c:16:10: warning: ‘strcspn’ reading 1 or more bytes from a region of size 0 [-Wstringop-overread]
+    16 |     str2[strcspn(str2, '\n')] = '\0';
+        |          ^~~~~~~~~~~~~~~~~~~
+cc1: note: source object is likely at address zero
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+denchan@denchan:~/文档/c-demo$ ./string
+arr = hello world!
+str1 = xiaoming
+请输入字符串:学习
+你输入的字符串是：学习
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+string.c: In function ‘main’:
+string.c:23:27: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘size_t’ {aka ‘long unsigned int’} [-Wformat=]
+    23 |     printf("name的长度是:%d\n", strlen(name));
+        |                          ~^     ~~~~~~~~~~~~
+        |                           |     |
+        |                           int   size_t {aka long unsigned int}
+        |                          %ld
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+denchan@denchan:~/文档/c-demo$ ./string
+arr = hello world!
+str1 = xiaoming
+请输入字符串:nn
+你输入的字符串是：nn
+name的长度是:5
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+string.c: In function ‘main’:
+string.c:28:18: error: expected ‘;’ before ‘printf’
+    28 |     strcat(a1,a2)
+        |                  ^
+        |                  ;
+    29 |     printf("拼接后的字符串:%s\n", a1);
+        |     ~~~~~~
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+denchan@denchan:~/文档/c-demo$ ./string
+arr = hello world!
+str1 = xiaoming
+请输入字符串:xx
+你输入的字符串是：xx
+name的长度是:5
+拼接后的字符串:hello,world
+复制后的字符串:Hello, World!
+字符串的比较结果:0
+查找的位置World!
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+denchan@denchan:~/文档/c-demo$ ./string
+arr = hello world!
+str1 = xiaoming
+请输入字符串:vv
+你输入的字符串是：vv
+name的长度是:5
+拼接后的字符串:hello,world
+复制后的字符串:Hello, World!
+字符串的比较结果:0
+查找的位置World!
+str指向的位置在0x7fffec32e952,自身在内存的地址在0x7fffec32e952
+found指向的的位置在0x7fffec32e959,自身在内存的地址在0x7fffec32e908
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+string.c: In function ‘main’:
+string.c:51:5: error: unknown type name ‘ptrdiff_t’
+    51 |     ptrdiff_t distance = found - str;
+        |     ^~~~~~~~~
+string.c:4:1: note: ‘ptrdiff_t’ is defined in header ‘<stddef.h>’; did you forget to ‘#include <stddef.h>’?
+    3 | #include<string.h>
+    +++ |+#include <stddef.h>
+    4 | int main()
+string.c:52:27: warning: format ‘%ld’ expects argument of type ‘long int’, but argument 2 has type ‘int’ [-Wformat=]
+    52 |     printf("之间的距离是%ld\n", distance);
+        |                         ~~^     ~~~~~~~~
+        |                           |     |
+        |                           |     int
+        |                           long int
+        |                         %d
+denchan@denchan:~/文档/c-demo$ ^C
+denchan@denchan:~/文档/c-demo$ gcc string.c -o string
+denchan@denchan:~/文档/c-demo$ ./string
+arr = hello world!
+str1 = xiaoming
+请输入字符串:nn
+你输入的字符串是：nn
+name的长度是:5
+拼接后的字符串:hello,world
+复制后的字符串:Hello, World!
+字符串的比较结果:0
+查找的位置World!
+str指向的位置在0x7fffadf80e22,自身在内存的地址在0x7fffadf80e22
+found指向的的位置在0x7fffadf80e29,自身在内存的地址在0x7fffadf80dd0
+之间的距离是7
+denchan@denchan:~/文档/c-demo$
+            
+        </code></pre>
+    </div>
+
+    <script src="/js/prism.js"></script>
+
+</body>
+
+</html>
